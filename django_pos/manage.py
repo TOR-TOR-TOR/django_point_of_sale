@@ -6,6 +6,12 @@ import sys
 
 def main():
     """Run administrative tasks."""
+    # Load .env variables into os.environ BEFORE Django reads any settings.
+    # This must happen here because manage.py is the entry point —
+    # if dotenv is only called inside settings.py it may fire too late.
+    from dotenv import load_dotenv
+    load_dotenv()
+
     os.environ.setdefault("DJANGO_SETTINGS_MODULE", "django_pos.settings")
     try:
         from django.core.management import execute_from_command_line

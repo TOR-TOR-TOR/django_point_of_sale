@@ -1,0 +1,21 @@
+-- List all tables in pos_db
+
+USE pos_db
+
+SELECT
+    TABLE_NAME,
+    TABLE_TYPE
+FROM
+    INFORMATION_SCHEMA.TABLES
+WHERE TABLE_TYPE = 'BASE TABLE'
+ORDER BY TABLE_NAME;
+
+--List columns in tables
+
+SELECT
+    COLUMN_NAME,
+    DATA_TYPE
+FROM 
+    INFORMATION_SCHEMA.COLUMNS
+WHERE
+    TABLE_NAME = 'Customers'
